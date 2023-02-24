@@ -30,8 +30,20 @@
                 <tr class="table-primary">
                     <th scope="row">{{recipe.id}}</th>
                     <td>{{recipe.name}}</td>
-                    <td>{{recipe.price}}</td>
-                    <td>{{recipe.difficulty}}</td>
+                    <td>
+                        {% if recipe.price is null %}
+                            -
+                        {% else %}
+                            {{recipe.price}}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if recipe.difficulty is null %}
+                            -
+                        {% else %}
+                            {{recipe.difficulty}}
+                        {% endif %}
+                    </td>
                     <td>{{recipe.createdAt|date("d/m/Y")}}</td>
                     <td>
                         To do
