@@ -6,7 +6,9 @@
     <div class="container mt-4">
       {% if not recipes.items is same as ([]) %}
         <h1>Mes recettes</h1>
-
+        <a href="{{ path('recipe.new')}}" class="btn btn-primary">
+            Créer une recette
+        </a>
 
         <div class="count mt-4">
             <span class="badge bg-info">
