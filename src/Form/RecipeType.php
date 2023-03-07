@@ -118,6 +118,7 @@ class RecipeType extends AbstractType
                 'attr' =>[
                     'class' => 'form-control',
                     ],
+                    'required' => false,
                     'label' => 'Favoris ?',
                     'label_attr' => [
                         'class' => 'form-label mt-4'
