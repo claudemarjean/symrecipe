@@ -57,7 +57,9 @@
                         <a href="{{path('recipe.edit',{id: recipe.id})}}" class="btn btn-info"  >Modifier</a>
                     </td>
                     <td>
-                        To do
+                        <a href="{{ path('recipe.delete', {id: recipe.id})}}"class="btn btn-warning">
+                            Supprimer
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

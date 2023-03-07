@@ -113,7 +113,7 @@ class IngredientController extends AbstractController
 
     
     /**
-     * Undocumented function
+     * This controller allow us to delete ingredient
      *
      * @param EntityManagerInterface $manager
      * @param Ingredient $ingredient
