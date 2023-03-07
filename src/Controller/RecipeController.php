@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Recipe;
 use App\Form\RecipeType;
 use App\Repository\RecipeRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,14 +40,24 @@ class RecipeController extends AbstractController
     }
 
     #[Route('/recette/creation', 'recipe.new', methods: ['GET', 'POST'])]
-    public function new(Request $request) :Response
+    public function new(Request $request, EntityManagerInterface $manager) :Response
     {
         $recipe = new Recipe;
         $form = $this->createForm(RecipeType::class , $recipe);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            dd($form->getData());
+            $recipe = $form->getData();
+
+            $manager->persist($recipe);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre recette a été crée avec succèss'
+            );
+
+            return $this->redirectToRoute('recipe.index');
         }
 
         return $this->render('pages/recipe/new.html.twig',[
